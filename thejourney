@@ -521,18 +521,18 @@ body::after {
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-eyebrow">a roadmap made with love, just for you</div>
+  <div class="hero-eyebrow">just for you</div>
 
   <div class="hero-heading-wrap">
     <h1 data-text="❤ Your Journey ❤">❤ Your Journey ❤</h1>
   </div>
 
-  <p class="hero-sub">I put this together <b>just for you.</b> Every course is free or super affordable in ₹. Click any phase to open it, click any course to go straight there.</p>
+  <p class="hero-sub">Click any phase to open it, click any course to go straight there.</p>
 
   <div class="progress-wrap" onclick="calcProgress()">
     <div class="progress-lbl">✦ your journey so far</div>
     <div class="progress-bar-bg"><div class="progress-bar-fill" id="pFill"></div></div>
-    <div class="progress-txt" id="pTxt">ready to begin, baby ✦</div>
+    <div class="progress-txt" id="pTxt">ready to begin, beautiful ✦</div>
   </div>
 </section>
 
@@ -553,7 +553,7 @@ body::after {
     </button>
     <div class="phase-body" id="pb-ph1">
 
-      <div class="love-note"><span class="ni">💜</span><span>Don't rush this part, love. <b>Python and maths are the foundation of everything.</b> Take your time here — it'll all click so beautifully later, I promise.</span></div>
+      <div class="love-note"><span class="ni">💜</span><span>Don't stress about it, darling.</span></div>
 
       <!-- Python -->
       <div class="node-card" style="--accent:#3b82f6" id="n-python">
@@ -661,7 +661,7 @@ body::after {
     </button>
     <div class="phase-body" id="pb-ph2">
 
-      <div class="love-note"><span class="ni">🌸</span><span>This is where it starts getting <b>really fun, baby.</b> You'll be making actual graphs and finding patterns in real data. I genuinely cannot wait to see what you discover.</span></div>
+      <div class="love-note"><span class="ni">🌸</span><span>This is where the real part starts.</span></div>
 
       <!-- Data Analysis -->
       <div class="node-card" style="--accent:#10b981" id="n-da">
@@ -774,7 +774,7 @@ body::after {
     </button>
     <div class="phase-body" id="pb-ph3">
 
-      <div class="love-note"><span class="ni">✨</span><span>Pick whichever track excites you more, jaan. <b>There is no wrong choice here.</b> You can always explore both once you're comfortable — I'll be cheering you on either way, always.</span></div>
+      <div class="love-note"><span class="ni">✨</span><span>Pick whichever track excites you more, meri jaan.</span></div>
 
       <div class="fork">
         <!-- ML TRACK -->
@@ -879,7 +879,7 @@ body::after {
     </button>
     <div class="phase-body" id="pb-ph4">
 
-      <div class="love-note"><span class="ni">🔥</span><span>This is the advanced stuff and <b>you will absolutely get here.</b> Deep learning, neural networks, AI - future data scientist energy only. I am so unbelievably proud of you already.</span></div>
+      <div class="love-note"><span class="ni">🔥</span><span>I'll be super proud when you get here, and already am tbh.</span></div>
 
       <!-- Deep Learning -->
       <div class="node-card" style="--accent:#ef4444" id="n-dl">
@@ -987,7 +987,7 @@ body::after {
     </button>
     <div class="phase-body" id="pb-ph5">
 
-      <div class="love-note"><span class="ni">🏅</span><span>This is the finish line, but also the beginning. <b>Every certificate you earn here is real proof</b> of everything you worked so hard to build. I'll frame it with you.</span></div>
+      <div class="love-note"><span class="ni">🏅</span><span>This is the finish line, but also the beginning.</span></div>
 
       <div class="node-card" style="--accent:#8b5cf6" id="n-cap">
         <div class="node-hdr" onclick="toggleNode('n-cap')">
@@ -1057,7 +1057,7 @@ body::after {
   <!-- FINAL -->
   <div class="final">
     <h2>You're going to be incredible at this.</h2>
-    <p>Every single day you put into learning this, I fall more in love with how hard you try. I'm yours, and I'm cheering for you every step of the way. ❤️</p>
+    <p>I'm yours, and I'm cheering for you every step of the way. ❤️</p>
   </div>
 
 </main>
@@ -1065,7 +1065,7 @@ body::after {
 <script>
 
 // ── FLOATING HEARTS ──
-const HEARTS = ['❤️','🩷','💕','💖','💝','✨','🌸','💫','🫶','💗'];
+const HEARTS = ['❤️','🩷','💕','💖','💝','✨','💗'];
 const layer  = document.getElementById('heartsLayer');
 function spawnHeart(){
   const h=document.createElement('div'); h.className='fheart';
@@ -1137,7 +1137,7 @@ function calcProgress(){
   document.getElementById('pTxt').textContent =
     n===0 ? 'ready to begin, baby ✦' :
     n===ALL_NODES.length ? 'you did it!! I love you so much ❤️' :
-    `${n} of ${ALL_NODES.length} complete — keep going! 🌸`;
+    `${n} of ${ALL_NODES.length} complete - keep going! 🌸`;
 }
 
 // ── EXPAND ALL ──
