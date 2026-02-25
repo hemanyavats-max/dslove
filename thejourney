@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Journey ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #06030a;
+  --rose:      #ff2d6b;
+  --pink:      #ff6eb4;
+  --blush:     #ffb3d1;
+  --cream:     #fff0f5;
+  --gold:      #f5c97a;
+  --violet:    #9d4edd;
+  --glass:     rgba(255, 30, 90, 0.05);
+  --border-g:  rgba(255, 80, 140, 0.22);
+  --border-g2: rgba(255, 180, 210, 0.1);
+  --text:      #fce4ec;
+  --muted:     rgba(255, 180, 210, 0.5);
+  --free-c:    #4ade80;
+  --free-bg:   rgba(74, 222, 128, 0.07);
+  --free-br:   rgba(74, 222, 128, 0.22);
+  --paid-c:    #fbbf24;
+  --paid-bg:   rgba(251, 191, 36, 0.07);
+  --paid-br:   rgba(251, 191, 36, 0.22);
+  --cert-c:    #93c5fd;
+  --cert-bg:   rgba(147, 197, 253, 0.07);
+  --cert-br:   rgba(147, 197, 253, 0.22);
+  --font-d:    'Libre Bodoni', Georgia, serif;
+  --font-b:    'Cormorant Garamond', Georgia, serif;
+  --font-m:    'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: clamp(0.85rem, 1.1vw + 0.3rem, 1.05rem);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── GRAIN ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 9000;
+}
+
+/* ── ORBS ── */
+.orb {
+  position: fixed; border-radius: 50%; pointer-events: none;
+  filter: blur(90px); opacity: 0.15;
+  animation: drift 22s ease-in-out infinite alternate;
+}
+.orb1 { width: min(65vw,680px); height: min(65vw,680px); background: radial-gradient(circle,#ff2d6b,#9d4edd); top:-15%; left:-15%; animation-duration:26s; }
+.orb2 { width: min(45vw,480px); height: min(45vw,480px); background: radial-gradient(circle,#ff6eb4,#c41e50); bottom:5%; right:-10%; animation-duration:32s; animation-delay:-12s; }
+.orb3 { width: min(28vw,280px); height: min(28vw,280px); background: radial-gradient(circle,#9d4edd,#4a00e0); top:45%; left:45%; animation-duration:19s; animation-delay:-6s; }
+@keyframes drift {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(35px,-25px) scale(1.07); }
+}
+
+/* ── FLOATING HEARTS ── */
+.hearts-layer { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.fheart { position:absolute; bottom:-60px; opacity:0; animation: floatUp linear infinite; user-select:none; }
+@keyframes floatUp {
+  0%   { opacity:0; transform:translateY(0) rotate(0deg); }
+  8%   { opacity:0.55; }
+  92%  { opacity:0.15; }
+  100% { opacity:0; transform:translateY(-115vh) rotate(25deg); }
+}
+
+/* ── CURSOR: HEART WITH ARROW ── */
+
+/* ── NAV ── */
+.topnav {
+  position: sticky; top: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: clamp(10px,1.8vw,15px) clamp(16px,4vw,44px);
+  background: rgba(6,3,10,0.75);
+  backdrop-filter: blur(22px);
+  border-bottom: 1px solid var(--border-g2);
+}
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: clamp(0.88rem,1.8vw,1.15rem);
+  font-style: italic;
+  color: var(--blush);
+  letter-spacing: 0.02em;
+}
+.nav-logo b { color: var(--rose); font-weight:400; font-style:normal; }
+.nav-pills { display:flex; gap:clamp(5px,1.2vw,9px); flex-wrap:wrap; }
+.npill {
+  font-family: var(--font-m);
+  font-size: clamp(0.55rem,0.75vw+0.2rem,0.68rem);
+  padding: 3px 10px; border-radius: 20px; border: 1px solid;
+  letter-spacing: 0.4px; backdrop-filter: blur(8px);
+}
+.npill.free { background:var(--free-bg); border-color:var(--free-br); color:var(--free-c); }
+.npill.paid { background:var(--paid-bg); border-color:var(--paid-br); color:var(--paid-c); }
+.npill.cert { background:var(--cert-bg); border-color:var(--cert-br); color:var(--cert-c); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: clamp(50px,9vh,110px) clamp(16px,5vw,60px) clamp(36px,5vh,70px);
+  max-width: 960px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: var(--font-m);
+  font-size: clamp(0.6rem,0.9vw+0.2rem,0.78rem);
+  letter-spacing: 0.22em;
+  color: var(--pink);
+  text-transform: uppercase;
+  margin-bottom: clamp(10px,2vh,18px);
+  opacity: 0.8;
+}
+
+/* ── PAPER-FOLD HEADING (Mandy Michael inspired) ── */
+.hero-heading-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: clamp(12px,2.5vh,24px);
+  line-height: 1.05;
+}
+.hero-heading-wrap h1 {
+  font-family: var(--font-d);
+  font-size: clamp(2.6rem,8vw+0.5rem,7rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  color: rgba(255, 45, 107, 0.55);
+  position: relative;
+  text-shadow:
+    1px 3px 0px rgba(197,30,80,0.5),
+    2px 6px 0px rgba(157,78,221,0.35),
+    3px 9px 0px rgba(100,0,60,0.25),
+    0 0 60px rgba(255,45,107,0.2);
+}
+
+/* top fold — lighter, offset, reveals upper half */
+.hero-heading-wrap h1::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 52%;
+  overflow: hidden;
+  color: var(--cream);
+  text-shadow: 0 2px 8px rgba(255,45,107,0.3), 0 0 40px rgba(255,110,180,0.2);
+  transform: translateX(3px) skewX(-0.8deg) scaleY(1.04);
+  background: linear-gradient(to bottom, var(--cream) 0%, var(--blush) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  z-index: 2;
+}
+
+/* bottom fold — slightly inset, dimmer */
+.hero-heading-wrap h1::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  clip-path: polygon(0 52%, 100% 52%, 100% 100%, 0 100%);
+  color: var(--rose);
+  text-shadow: none;
+  transform: translateX(-2px) skewX(0.6deg) scaleY(0.96);
+  background: linear-gradient(to bottom, var(--pink) 0%, var(--rose) 60%, #7a0030 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.hero-sub {
+  font-family: var(--font-b);
+  font-size: clamp(1rem,1.8vw+0.3rem,1.35rem);
+  font-style: italic;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto clamp(20px,3.5vh,36px);
+  line-height: 1.75;
+}
+.hero-sub b { color: var(--blush); font-weight:400; font-style:normal; }
+
+/* progress pill */
+.progress-wrap {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 8px;
+  background: rgba(255,30,90,0.06);
+  border: 1px solid var(--border-g);
+  border-radius: 20px;
+  padding: 14px 28px;
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+.progress-wrap:hover { border-color: rgba(255,80,140,0.45); box-shadow: 0 0 28px rgba(255,45,107,0.12); }
+.progress-lbl { font-family:var(--font-m); font-size:clamp(0.58rem,0.8vw+0.15rem,0.72rem); color:var(--pink); letter-spacing:0.12em; text-transform:uppercase; }
+.progress-bar-bg { width: clamp(160px,28vw,260px); height: 5px; background: rgba(255,80,140,0.12); border-radius:10px; overflow:hidden; }
+.progress-bar-fill { height:100%; border-radius:10px; background: linear-gradient(90deg,var(--rose),var(--pink)); width:0%; transition: width 1s cubic-bezier(.34,1.56,.64,1); box-shadow: 0 0 8px var(--rose); }
+.progress-txt { font-family:var(--font-d); font-style:italic; font-size:clamp(0.9rem,1.5vw+0.2rem,1.15rem); color:var(--blush); }
+
+/* ── CANVAS ── */
+.canvas {
+  position: relative; z-index: 2;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 clamp(12px,4vw,40px) 100px;
+}
+
+/* expand all btn */
+.expand-btn {
+  display: flex; align-items: center; gap: 8px;
+  margin: 0 auto 32px;
+  padding: 9px 22px;
+  background: linear-gradient(135deg, rgba(255,45,107,0.12), rgba(157,78,221,0.12));
+  border: 1px solid var(--border-g);
+  border-radius: 30px;
+  color: var(--blush);
+  font-family: var(--font-m);
+  font-size: clamp(0.6rem,0.85vw+0.15rem,0.74rem);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.22s;
+  backdrop-filter: blur(10px);
+}
+.expand-btn:hover { background: linear-gradient(135deg,rgba(255,45,107,0.22),rgba(157,78,221,0.22)); box-shadow: 0 0 18px rgba(255,45,107,0.18); transform:scale(1.02); }
+
+/* ── PHASE SECTION (collapsible) ── */
+.phase-section { margin-bottom: 6px; }
+
+.phase-toggle-btn {
+  width: 100%;
+  display: flex; align-items: center; gap: 12px;
+  padding: clamp(10px,1.6vh,15px) clamp(12px,2vw,18px);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border-g2);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  margin-bottom: 10px;
+  backdrop-filter: blur(12px);
+}
+.phase-toggle-btn:hover { background: rgba(255,80,140,0.05); border-color: var(--border-g); }
+.phase-toggle-btn.open { border-radius: 12px 12px 0 0; border-bottom-color: transparent; }
+
+.phase-orb {
+  width: clamp(9px,1.3vw,13px); height: clamp(9px,1.3vw,13px);
+  border-radius: 50%; flex-shrink:0;
+  position: relative;
+}
+.phase-orb::after {
+  content:''; position:absolute; inset:-4px; border-radius:50%;
+  border: 1px solid currentColor; opacity:0.3;
+  animation: pulsering 2.2s ease-out infinite;
+}
+@keyframes pulsering {
+  0%   { transform:scale(1); opacity:0.35; }
+  100% { transform:scale(2.4); opacity:0; }
+}
+
+.phase-title {
+  font-family: var(--font-m);
+  font-size: clamp(0.62rem,0.9vw+0.2rem,0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  flex: 1;
+  text-align: left;
+}
+.phase-time {
+  font-family: var(--font-m);
+  font-size: clamp(0.55rem,0.75vw+0.15rem,0.68rem);
+  color: var(--muted);
+  background: rgba(255,80,140,0.06);
+  border: 1px solid var(--border-g2);
+  padding: 2px 10px; border-radius: 20px; white-space: nowrap;
+}
+.phase-chevron {
+  font-size: 10px; color: var(--muted);
+  transition: transform 0.3s cubic-bezier(.34,1.56,.64,1);
+  flex-shrink:0;
+}
+.phase-chevron.open { transform: rotate(180deg); color: var(--pink); }
+
+.phase-body {
+  display: none;
+  padding: clamp(10px,1.5vh,16px);
+  border: 1px solid var(--border-g2);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  background: rgba(255,255,255,0.01);
+  backdrop-filter: blur(12px);
+}
+.phase-body.open { display: block; }
+
+/* ── LOVE NOTE ── */
+.love-note {
+  background: linear-gradient(135deg, rgba(157,78,221,0.07), rgba(255,45,107,0.07));
+  border: 1px solid rgba(255,110,180,0.18);
+  border-left: 2px solid var(--pink);
+  border-radius: 10px;
+  padding: clamp(9px,1.4vh,14px) clamp(12px,2vw,18px);
+  font-size: clamp(0.85rem,1.2vw+0.2rem,1.05rem);
+  font-style: italic;
+  color: rgba(255,200,220,0.82);
+  line-height: 1.7;
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: clamp(8px,1.2vh,12px);
+  backdrop-filter: blur(8px);
+  transition: border-left-color 0.25s;
+}
+.love-note:hover { border-left-color: var(--rose); }
+.love-note .ni { font-size: clamp(15px,1.8vw,20px); flex-shrink:0; margin-top:2px; }
+.love-note b { font-style:normal; color:var(--blush); font-weight:400; }
+
+/* ── NODE CARD ── */
+.node-card {
+  background: rgba(255,30,90,0.04);
+  border: 1px solid var(--border-g2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: clamp(7px,1.1vh,11px);
+  backdrop-filter: blur(18px);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.18s;
+  border-left: 2px solid var(--accent, rgba(255,80,140,0.3));
+}
+.node-card:hover {
+  border-color: var(--border-g);
+  box-shadow: 0 0 24px rgba(255,45,107,0.07), 0 6px 32px rgba(0,0,0,0.35);
+  transform: translateY(-1px);
+}
+
+.node-hdr {
+  padding: clamp(10px,1.5vh,14px) clamp(12px,2vw,18px);
+  display: flex; align-items: center; gap: 10px;
+  cursor: pointer; user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: background 0.18s, border-color 0.18s;
+}
+.node-hdr:hover { background: rgba(255,110,180,0.04); }
+.node-hdr.open { border-color: var(--border-g2); }
+
+.node-icon { font-size: clamp(15px,1.8vw,19px); flex-shrink:0; }
+.node-title {
+  font-family: var(--font-d);
+  font-size: clamp(0.88rem,1.3vw+0.2rem,1.1rem);
+  font-style: italic;
+  font-weight: 400;
+  flex:1;
+  color: var(--cream);
+}
+.done-check {
+  width: 19px; height: 19px; border-radius: 50%;
+  border: 1.5px solid rgba(255,80,140,0.28);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 9px; color: var(--muted); cursor:pointer;
+  transition: all 0.2s; flex-shrink:0;
+}
+.done-check:hover { border-color:var(--free-c); color:var(--free-c); }
+.done-check.done { background:var(--free-bg); border-color:var(--free-br); color:var(--free-c); }
+.node-tog { font-family:var(--font-m); font-size:10px; color:var(--muted); transition: transform 0.28s cubic-bezier(.34,1.56,.64,1); flex-shrink:0; }
+.node-tog.open { transform:rotate(180deg); color:var(--pink); }
+
+.node-body { padding: clamp(10px,1.6vh,16px); display:none; }
+.node-body.open { display:block; }
+
+/* ── SECTION LABEL ── */
+.slbl {
+  display:flex; align-items:center; gap:8px;
+  font-family:var(--font-m);
+  font-size:clamp(0.58rem,0.78vw+0.15rem,0.7rem);
+  font-weight:500;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  margin: clamp(6px,1vh,12px) 0 clamp(7px,1vh,10px);
+}
+.slbl::after { content:''; flex:1; height:1px; background:var(--border-g2); }
+.slbl.free { color:var(--free-c); }
+.slbl.paid { color:var(--paid-c); }
+
+/* ── COURSE GRID ── */
+.cgrid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(210px,100%), 1fr));
+  gap: clamp(6px,1vw,9px);
+  margin-bottom: clamp(7px,1.2vh,12px);
+}
+.cgrid.single { grid-template-columns:1fr; }
+
+/* ── COURSE CHIP ── */
+.chip {
+  background: rgba(255,255,255,0.022);
+  border: 1px solid var(--border-g2);
+  border-radius: 9px;
+  padding: clamp(9px,1.3vh,13px) clamp(10px,1.4vw,13px);
+  transition: background 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+  position: relative; overflow:hidden;
+}
+.chip::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg,transparent,rgba(255,110,180,0.28),transparent);
+  opacity:0; transition:opacity 0.25s;
+}
+.chip:hover { background:rgba(255,80,140,0.055); border-color:rgba(255,80,140,0.28); transform:translateY(-2px); box-shadow:0 4px 16px rgba(255,45,107,0.09); }
+.chip:hover::before { opacity:1; }
+
+.chip-name { font-size:clamp(0.76rem,1vw+0.15rem,0.92rem); margin-bottom:3px; line-height:1.35; }
+.chip-name a {
+  color:var(--cream); text-decoration:none;
+  background-image: linear-gradient(var(--pink),var(--pink));
+  background-repeat:no-repeat; background-size:0% 1px; background-position:0 100%;
+  transition: background-size 0.28s, color 0.18s;
+}
+.chip-name a:hover { color:var(--blush); background-size:100% 1px; }
+.chip-plat { font-family:var(--font-m); font-size:clamp(0.58rem,0.75vw+0.12rem,0.68rem); color:var(--muted); margin-bottom:7px; }
+.chip-plat a { color:var(--muted); text-decoration:none; transition:color 0.18s; }
+.chip-plat a:hover { color:var(--pink); }
+.tags { display:flex; flex-wrap:wrap; gap:4px; }
+.tag { font-family:var(--font-m); font-size:clamp(0.52rem,0.7vw+0.12rem,0.64rem); padding:2px 7px; border-radius:4px; border:1px solid; }
+.tag.free { background:var(--free-bg); border-color:var(--free-br); color:var(--free-c); }
+.tag.paid { background:var(--paid-bg); border-color:var(--paid-br); color:var(--paid-c); }
+.tag.cert { background:var(--cert-bg); border-color:var(--cert-br); color:var(--cert-c); }
+
+/* ── FORK ── */
+.fork { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr)); gap:clamp(9px,1.5vw,14px); }
+.track {
+  background:rgba(255,30,90,0.03); border:1px solid var(--border-g2);
+  border-radius:10px; overflow:hidden; backdrop-filter:blur(14px);
+  transition:border-color 0.2s;
+}
+.track:hover { border-color:var(--border-g); }
+.track-hdr {
+  padding:clamp(9px,1.3vh,13px) clamp(11px,1.8vw,16px);
+  border-bottom:1px solid var(--border-g2);
+  font-family:var(--font-d); font-style:italic;
+  font-size:clamp(0.88rem,1.2vw+0.2rem,1.05rem);
+  color:var(--blush); display:flex; align-items:center; gap:9px;
+}
+.track-body { padding:clamp(10px,1.5vh,16px); }
+
+/* ── CONNECTOR ── */
+.conn { display:flex; flex-direction:column; align-items:center; padding:3px 0; }
+.conn-line { width:1px; height:clamp(18px,2.5vh,30px); background:linear-gradient(to bottom,var(--border-g),transparent); }
+.conn-lbl {
+  font-family:var(--font-m); font-size:clamp(0.58rem,0.78vw+0.12rem,0.7rem);
+  color:var(--muted); background:rgba(6,3,10,0.8);
+  border:1px solid var(--border-g2); padding:3px 13px; border-radius:20px;
+  margin:3px 0; backdrop-filter:blur(8px); white-space:nowrap;
+}
+.conn-arr { color:var(--muted); font-size:9px; margin-top:2px; }
+
+/* ── FINAL ── */
+.final {
+  text-align:center;
+  padding:clamp(50px,8vh,90px) 20px clamp(40px,6vh,70px);
+  position:relative;
+}
+.final h2 {
+  font-family:var(--font-d); font-style:italic; font-weight:400;
+  font-size:clamp(1.9rem,4.5vw+0.4rem,4rem);
+  background:linear-gradient(135deg,var(--blush),var(--rose),var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  filter:drop-shadow(0 0 22px rgba(255,45,107,0.28));
+  margin-bottom:14px;
+}
+.final p { color:var(--muted); font-style:italic; font-size:clamp(0.95rem,1.5vw+0.2rem,1.2rem); max-width:460px; margin:0 auto; line-height:1.85; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:rgba(255,45,107,0.28); border-radius:2px; }
+
+/* ── ANIMS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.hero-heading-wrap,.hero-sub,.progress-wrap,.phase-section { animation:fadeUp 0.5s ease both; }
+.phase-section:nth-child(2){animation-delay:.06s} .phase-section:nth-child(3){animation-delay:.12s}
+.phase-section:nth-child(4){animation-delay:.18s} .phase-section:nth-child(5){animation-delay:.24s}
+.phase-section:nth-child(6){animation-delay:.30s}
+
+@media(max-width:500px){
+  .topnav{flex-wrap:wrap;gap:7px;}
+  .fork{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+
+<!-- bg -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+<div class="hearts-layer" id="heartsLayer"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav class="topnav">
+  <div class="nav-logo">for my <b>baby</b> ♡</div>
+  <div class="nav-pills">
+    <span class="npill free">● Free</span>
+    <span class="npill paid">● Budget ₹</span>
+    <span class="npill cert">● Certificate</span>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-eyebrow">a roadmap made with love, just for you</div>
+
+  <div class="hero-heading-wrap">
+    <h1 data-text="❤ Your Journey ❤">❤ Your Journey ❤</h1>
+  </div>
+
+  <p class="hero-sub">I put this together <b>just for you.</b> Every course is free or super affordable in ₹. Click any phase to open it, click any course to go straight there.</p>
+
+  <div class="progress-wrap" onclick="calcProgress()">
+    <div class="progress-lbl">✦ your journey so far</div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="pFill"></div></div>
+    <div class="progress-txt" id="pTxt">ready to begin, baby ✦</div>
+  </div>
+</section>
+
+<!-- ═══ CANVAS ═══ -->
+<main class="canvas">
+
+  <div style="text-align:center;margin-bottom:28px;">
+    <button class="expand-btn" onclick="toggleAll()">✦ <span id="expandLbl">expand all phases</span></button>
+  </div>
+
+  <!-- ══ PHASE 1 ══ -->
+  <div class="phase-section">
+    <button class="phase-toggle-btn" onclick="togglePhase('ph1')" id="phbtn-ph1">
+      <div class="phase-orb" style="background:#3b82f6;color:#3b82f6"></div>
+      <div class="phase-title" style="color:#60a5fa">Phase 1 - Foundations</div>
+      <div class="phase-time">4 - 6 weeks</div>
+      <div class="phase-chevron" id="phchev-ph1">▼</div>
+    </button>
+    <div class="phase-body" id="pb-ph1">
+
+      <div class="love-note"><span class="ni">💜</span><span>Don't rush this part, love. <b>Python and maths are the foundation of everything.</b> Take your time here — it'll all click so beautifully later, I promise.</span></div>
+
+      <!-- Python -->
+      <div class="node-card" style="--accent:#3b82f6" id="n-python">
+        <div class="node-hdr" onclick="toggleNode('n-python')">
+          <span class="node-icon">🐍</span>
+          <span class="node-title">Python Programming</span>
+          <span class="done-check" id="dc-n-python" onclick="markDone(event,'n-python')">✓</span>
+          <span class="node-tog" id="nt-n-python">▼</span>
+        </div>
+        <div class="node-body" id="nb-n-python">
+          <div class="slbl free">🟢 Free First</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://cs50.harvard.edu/python/2022/" target="_blank">CS50P - Python (Harvard)</a></div>
+              <div class="chip-plat"><a href="https://cs50.harvard.edu" target="_blank">cs50.harvard.edu</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.learnpython.org/" target="_blank">Learn Python - Interactive</a></div>
+              <div class="chip-plat"><a href="https://www.learnpython.org" target="_blank">learnpython.org</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://nptel.ac.in/courses/106106213" target="_blank">Programming in Python - NPTEL</a></div>
+              <div class="chip-plat"><a href="https://nptel.ac.in" target="_blank">nptel.ac.in - IIT Madras</a></div>
+              <div class="tags"><span class="tag free">₹0 COURSE</span><span class="tag cert">CERT ₹1,000</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://swayam.gov.in" target="_blank">Python for Data Science - SWAYAM</a></div>
+              <div class="chip-plat"><a href="https://swayam.gov.in" target="_blank">swayam.gov.in</a></div>
+              <div class="tags"><span class="tag free">₹0 COURSE</span><span class="tag cert">CERT ₹1,100</span></div>
+            </div>
+          </div>
+          <div class="slbl paid">🟡 Budget Paid</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.udemy.com/course/complete-python-bootcamp/" target="_blank">Complete Python Bootcamp</a></div>
+              <div class="chip-plat"><a href="https://www.udemy.com" target="_blank">Udemy - Jose Portilla</a></div>
+              <div class="tags"><span class="tag paid">₹449 - ₹599</span><span class="tag cert">CERT INCLUDED</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.coursera.org/specializations/python" target="_blank">Python for Everybody Specialization</a></div>
+              <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - Univ. of Michigan</a></div>
+              <div class="tags"><span class="tag free">AUDIT FREE</span><span class="tag paid">CERT ~₹2,923/mo</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Math -->
+      <div class="node-card" style="--accent:#3b82f6" id="n-math">
+        <div class="node-hdr" onclick="toggleNode('n-math')">
+          <span class="node-icon">🧮</span>
+          <span class="node-title">Statistics & Mathematics</span>
+          <span class="done-check" id="dc-n-math" onclick="markDone(event,'n-math')">✓</span>
+          <span class="node-tog" id="nt-n-math">▼</span>
+        </div>
+        <div class="node-body" id="nb-n-math">
+          <div class="slbl free">🟢 Free First</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.khanacademy.org/math/statistics-probability" target="_blank">Statistics & Probability</a></div>
+              <div class="chip-plat"><a href="https://www.khanacademy.org" target="_blank">khanacademy.org</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.khanacademy.org/math/linear-algebra" target="_blank">Linear Algebra</a></div>
+              <div class="chip-plat"><a href="https://www.khanacademy.org" target="_blank">khanacademy.org</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://ocw.mit.edu/courses/18-650-statistics-for-applications-fall-2016/" target="_blank">MIT 18.650 - Statistics</a></div>
+              <div class="chip-plat"><a href="https://ocw.mit.edu" target="_blank">MIT OpenCourseWare</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://nptel.ac.in/courses/111105041" target="_blank">Probability & Statistics - NPTEL</a></div>
+              <div class="chip-plat"><a href="https://nptel.ac.in" target="_blank">nptel.ac.in - IIT Kharagpur</a></div>
+              <div class="tags"><span class="tag free">₹0 COURSE</span><span class="tag cert">CERT ₹1,000</span></div>
+            </div>
+          </div>
+          <div class="slbl paid">🟡 Budget Paid</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.coursera.org/specializations/mathematics-machine-learning" target="_blank">Mathematics for ML Specialization</a></div>
+              <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - Imperial College London</a></div>
+              <div class="tags"><span class="tag free">AUDIT FREE</span><span class="tag paid">CERT ~₹2,923/mo</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /phase-body -->
+  </div><!-- /phase 1 -->
+
+  <div class="conn"><div class="conn-line"></div><div class="conn-lbl">basics done ✓</div><div class="conn-arr">▼</div></div>
+
+  <!-- ══ PHASE 2 ══ -->
+  <div class="phase-section">
+    <button class="phase-toggle-btn" onclick="togglePhase('ph2')" id="phbtn-ph2">
+      <div class="phase-orb" style="background:#10b981;color:#10b981"></div>
+      <div class="phase-title" style="color:#34d399">Phase 2 - Core Data Science</div>
+      <div class="phase-time">6 - 10 weeks</div>
+      <div class="phase-chevron" id="phchev-ph2">▼</div>
+    </button>
+    <div class="phase-body" id="pb-ph2">
+
+      <div class="love-note"><span class="ni">🌸</span><span>This is where it starts getting <b>really fun, baby.</b> You'll be making actual graphs and finding patterns in real data. I genuinely cannot wait to see what you discover.</span></div>
+
+      <!-- Data Analysis -->
+      <div class="node-card" style="--accent:#10b981" id="n-da">
+        <div class="node-hdr" onclick="toggleNode('n-da')">
+          <span class="node-icon">📊</span>
+          <span class="node-title">Data Analysis - NumPy, Pandas, EDA</span>
+          <span class="done-check" id="dc-n-da" onclick="markDone(event,'n-da')">✓</span>
+          <span class="node-tog" id="nt-n-da">▼</span>
+        </div>
+        <div class="node-body" id="nb-n-da">
+          <div class="slbl free">🟢 Free First</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.freecodecamp.org/learn/data-analysis-with-python/" target="_blank">Data Analysis with Python</a></div>
+              <div class="chip-plat"><a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp.org</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.kaggle.com/learn/pandas" target="_blank">Pandas - Kaggle Learn</a></div>
+              <div class="chip-plat"><a href="https://www.kaggle.com/learn" target="_blank">kaggle.com/learn</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.kaggle.com/learn/data-cleaning" target="_blank">Data Cleaning - Kaggle</a></div>
+              <div class="chip-plat"><a href="https://www.kaggle.com/learn" target="_blank">kaggle.com/learn</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.freecodecamp.org/learn/data-visualization/" target="_blank">Data Visualization with Python</a></div>
+              <div class="chip-plat"><a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp.org</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.kaggle.com/learn/data-visualization" target="_blank">Data Visualization - Kaggle</a></div>
+              <div class="chip-plat"><a href="https://www.kaggle.com/learn" target="_blank">kaggle.com/learn</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+          </div>
+          <div class="slbl paid">🟡 Budget Paid</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.udemy.com/course/python-for-data-science-and-machine-learning-bootcamp/" target="_blank">Python for Data Science & ML Bootcamp</a></div>
+              <div class="chip-plat"><a href="https://www.udemy.com" target="_blank">Udemy - Jose Portilla</a></div>
+              <div class="tags"><span class="tag paid">₹449 - ₹599</span><span class="tag cert">CERT INCLUDED</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.coursera.org/professional-certificates/ibm-data-science" target="_blank">IBM Data Science Professional Cert</a></div>
+              <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - IBM - 10 courses</a></div>
+              <div class="tags"><span class="tag free">AUDIT FREE</span><span class="tag paid">CERT ~₹2,923/mo</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SQL -->
+      <div class="node-card" style="--accent:#10b981" id="n-sql">
+        <div class="node-hdr" onclick="toggleNode('n-sql')">
+          <span class="node-icon">🗄️</span>
+          <span class="node-title">SQL & Databases</span>
+          <span class="done-check" id="dc-n-sql" onclick="markDone(event,'n-sql')">✓</span>
+          <span class="node-tog" id="nt-n-sql">▼</span>
+        </div>
+        <div class="node-body" id="nb-n-sql">
+          <div class="slbl free">🟢 Free First</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.kaggle.com/learn/intro-to-sql" target="_blank">Intro to SQL - Kaggle</a></div>
+              <div class="chip-plat"><a href="https://www.kaggle.com/learn" target="_blank">kaggle.com/learn</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.kaggle.com/learn/advanced-sql" target="_blank">Advanced SQL - Kaggle</a></div>
+              <div class="chip-plat"><a href="https://www.kaggle.com/learn" target="_blank">kaggle.com/learn</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://sqlzoo.net/wiki/SQL_Tutorial" target="_blank">SQL Zoo - Practice</a></div>
+              <div class="chip-plat"><a href="https://sqlzoo.net" target="_blank">sqlzoo.net</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://mode.com/sql-tutorial/" target="_blank">Mode SQL Tutorial</a></div>
+              <div class="chip-plat"><a href="https://mode.com" target="_blank">mode.com</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+          </div>
+          <div class="slbl paid">🟡 Budget Paid</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.udemy.com/course/the-complete-sql-bootcamp/" target="_blank">Complete SQL Bootcamp</a></div>
+              <div class="chip-plat"><a href="https://www.udemy.com" target="_blank">Udemy - Jose Portilla</a></div>
+              <div class="tags"><span class="tag paid">₹449 - ₹599</span><span class="tag cert">CERT INCLUDED</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="conn"><div class="conn-line"></div><div class="conn-lbl">choose your path ↓</div><div class="conn-arr">▼</div></div>
+
+  <!-- ══ PHASE 3 ══ -->
+  <div class="phase-section">
+    <button class="phase-toggle-btn" onclick="togglePhase('ph3')" id="phbtn-ph3">
+      <div class="phase-orb" style="background:#f59e0b;color:#f59e0b"></div>
+      <div class="phase-title" style="color:#fbbf24">Phase 3 - Intermediate (Pick a Track)</div>
+      <div class="phase-time">8 - 12 weeks</div>
+      <div class="phase-chevron" id="phchev-ph3">▼</div>
+    </button>
+    <div class="phase-body" id="pb-ph3">
+
+      <div class="love-note"><span class="ni">✨</span><span>Pick whichever track excites you more, jaan. <b>There is no wrong choice here.</b> You can always explore both once you're comfortable — I'll be cheering you on either way, always.</span></div>
+
+      <div class="fork">
+        <!-- ML TRACK -->
+        <div class="track">
+          <div class="track-hdr" style="border-left:2px solid #3b82f6;"><span>🤖</span> Machine Learning Track</div>
+          <div class="track-body">
+            <div class="slbl free">🟢 Free First</div>
+            <div class="cgrid single">
+              <div class="chip">
+                <div class="chip-name"><a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank">Intro to Machine Learning</a></div>
+                <div class="chip-plat"><a href="https://www.kaggle.com/learn" target="_blank">kaggle.com/learn</a></div>
+                <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+              </div>
+              <div class="chip">
+                <div class="chip-name"><a href="https://www.kaggle.com/learn/intermediate-machine-learning" target="_blank">Intermediate Machine Learning</a></div>
+                <div class="chip-plat"><a href="https://www.kaggle.com/learn" target="_blank">kaggle.com/learn</a></div>
+                <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+              </div>
+              <div class="chip">
+                <div class="chip-name"><a href="https://developers.google.com/machine-learning/crash-course" target="_blank">Google ML Crash Course</a></div>
+                <div class="chip-plat"><a href="https://developers.google.com/machine-learning" target="_blank">developers.google.com</a></div>
+                <div class="tags"><span class="tag free">₹0 FREE</span></div>
+              </div>
+              <div class="chip">
+                <div class="chip-name"><a href="https://course.fast.ai/" target="_blank">Practical Deep Learning for Coders</a></div>
+                <div class="chip-plat"><a href="https://fast.ai" target="_blank">fast.ai</a></div>
+                <div class="tags"><span class="tag free">₹0 FREE</span></div>
+              </div>
+            </div>
+            <div class="slbl paid">🟡 Budget Paid</div>
+            <div class="cgrid single">
+              <div class="chip">
+                <div class="chip-name"><a href="https://www.udemy.com/course/machinelearning/" target="_blank">Machine Learning A-Z</a></div>
+                <div class="chip-plat"><a href="https://www.udemy.com" target="_blank">Udemy - Kirill Eremenko</a></div>
+                <div class="tags"><span class="tag paid">₹449 - ₹599</span><span class="tag cert">CERT INCLUDED</span></div>
+              </div>
+              <div class="chip">
+                <div class="chip-name"><a href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank">ML Specialization - Andrew Ng</a></div>
+                <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - DeepLearning.AI</a></div>
+                <div class="tags"><span class="tag free">AUDIT FREE</span><span class="tag paid">CERT ~₹2,923/mo</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANALYTICS TRACK -->
+        <div class="track">
+          <div class="track-hdr" style="border-left:2px solid #10b981;"><span>📈</span> Data Analytics Track</div>
+          <div class="track-body">
+            <div class="slbl free">🟢 Free First</div>
+            <div class="cgrid single">
+              <div class="chip">
+                <div class="chip-name"><a href="https://www.kaggle.com/learn/feature-engineering" target="_blank">Feature Engineering - Kaggle</a></div>
+                <div class="chip-plat"><a href="https://www.kaggle.com/learn" target="_blank">kaggle.com/learn</a></div>
+                <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+              </div>
+              <div class="chip">
+                <div class="chip-name"><a href="https://nptel.ac.in/courses/106105175" target="_blank">Database Management Systems</a></div>
+                <div class="chip-plat"><a href="https://nptel.ac.in" target="_blank">nptel.ac.in - IIT Madras</a></div>
+                <div class="tags"><span class="tag free">₹0 COURSE</span><span class="tag cert">CERT ₹1,000</span></div>
+              </div>
+              <div class="chip">
+                <div class="chip-name"><a href="https://www.coursera.org/professional-certificates/google-data-analytics" target="_blank">Google Data Analytics (audit free)</a></div>
+                <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - Google</a></div>
+                <div class="tags"><span class="tag free">AUDIT FREE</span></div>
+              </div>
+              <div class="chip">
+                <div class="chip-name"><a href="https://www.tableau.com/learn/training" target="_blank">Tableau Free Training</a></div>
+                <div class="chip-plat"><a href="https://www.tableau.com" target="_blank">tableau.com</a></div>
+                <div class="tags"><span class="tag free">₹0 FREE</span></div>
+              </div>
+            </div>
+            <div class="slbl paid">🟡 Budget Paid</div>
+            <div class="cgrid single">
+              <div class="chip">
+                <div class="chip-name"><a href="https://www.coursera.org/professional-certificates/google-data-analytics" target="_blank">Google Data Analytics Cert</a></div>
+                <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - Google</a></div>
+                <div class="tags"><span class="tag paid">~₹2,923/mo</span><span class="tag cert">GOOGLE CERT</span></div>
+              </div>
+              <div class="chip">
+                <div class="chip-name"><a href="https://www.udemy.com/course/tableau10/" target="_blank">Tableau A-Z Hands-On</a></div>
+                <div class="chip-plat"><a href="https://www.udemy.com" target="_blank">Udemy - Kirill Eremenko</a></div>
+                <div class="tags"><span class="tag paid">₹449 - ₹599</span><span class="tag cert">CERT INCLUDED</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /fork -->
+
+    </div>
+  </div>
+
+  <div class="conn"><div class="conn-line"></div><div class="conn-lbl">tracks merge - build projects now</div><div class="conn-arr">▼</div></div>
+
+  <!-- ══ PHASE 4 ══ -->
+  <div class="phase-section">
+    <button class="phase-toggle-btn" onclick="togglePhase('ph4')" id="phbtn-ph4">
+      <div class="phase-orb" style="background:#ef4444;color:#ef4444"></div>
+      <div class="phase-title" style="color:#f87171">Phase 4 - Advanced</div>
+      <div class="phase-time">10 - 14 weeks</div>
+      <div class="phase-chevron" id="phchev-ph4">▼</div>
+    </button>
+    <div class="phase-body" id="pb-ph4">
+
+      <div class="love-note"><span class="ni">🔥</span><span>This is the advanced stuff and <b>you will absolutely get here.</b> Deep learning, neural networks, AI - future data scientist energy only. I am so unbelievably proud of you already.</span></div>
+
+      <!-- Deep Learning -->
+      <div class="node-card" style="--accent:#ef4444" id="n-dl">
+        <div class="node-hdr" onclick="toggleNode('n-dl')">
+          <span class="node-icon">🧠</span>
+          <span class="node-title">Deep Learning - TensorFlow & PyTorch</span>
+          <span class="done-check" id="dc-n-dl" onclick="markDone(event,'n-dl')">✓</span>
+          <span class="node-tog" id="nt-n-dl">▼</span>
+        </div>
+        <div class="node-body" id="nb-n-dl">
+          <div class="slbl free">🟢 Free First</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://course.fast.ai/" target="_blank">Practical Deep Learning - Part 1 & 2</a></div>
+              <div class="chip-plat"><a href="https://fast.ai" target="_blank">fast.ai</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.youtube.com/playlist?list=PLkDaE6sCZn6Ec-XTbcX1uRg2_u4xOEky0" target="_blank">Deep Learning Lectures - YouTube</a></div>
+              <div class="chip-plat"><a href="https://www.youtube.com" target="_blank">YouTube - DeepLearning.AI</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://nptel.ac.in/courses/106106184" target="_blank">Deep Learning - NPTEL IIT</a></div>
+              <div class="chip-plat"><a href="https://nptel.ac.in" target="_blank">nptel.ac.in</a></div>
+              <div class="tags"><span class="tag free">₹0 COURSE</span><span class="tag cert">CERT ₹1,000</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.tensorflow.org/tutorials" target="_blank">TensorFlow Official Tutorials</a></div>
+              <div class="chip-plat"><a href="https://www.tensorflow.org" target="_blank">tensorflow.org</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+          </div>
+          <div class="slbl paid">🟡 Budget Paid</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.udemy.com/course/complete-guide-to-tensorflow-for-deep-learning-with-python/" target="_blank">TensorFlow Bootcamp</a></div>
+              <div class="chip-plat"><a href="https://www.udemy.com" target="_blank">Udemy - Jose Portilla</a></div>
+              <div class="tags"><span class="tag paid">₹449 - ₹599</span><span class="tag cert">CERT INCLUDED</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.coursera.org/specializations/deep-learning" target="_blank">Deep Learning Specialization</a></div>
+              <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - DeepLearning.AI</a></div>
+              <div class="tags"><span class="tag free">AUDIT FREE</span><span class="tag paid">CERT ~₹2,923/mo</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NLP -->
+      <div class="node-card" style="--accent:#ef4444" id="n-nlp">
+        <div class="node-hdr" onclick="toggleNode('n-nlp')">
+          <span class="node-icon">💬</span>
+          <span class="node-title">NLP & Transformers</span>
+          <span class="done-check" id="dc-n-nlp" onclick="markDone(event,'n-nlp')">✓</span>
+          <span class="node-tog" id="nt-n-nlp">▼</span>
+        </div>
+        <div class="node-body" id="nb-n-nlp">
+          <div class="slbl free">🟢 Free First</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.kaggle.com/learn/intro-to-nlp" target="_blank">Intro to NLP - Kaggle</a></div>
+              <div class="chip-plat"><a href="https://www.kaggle.com/learn" target="_blank">kaggle.com/learn</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://huggingface.co/learn/nlp-course/chapter1/1" target="_blank">Hugging Face NLP Course</a></div>
+              <div class="chip-plat"><a href="https://huggingface.co" target="_blank">huggingface.co</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://web.stanford.edu/class/cs224n/" target="_blank">Stanford CS224N - NLP</a></div>
+              <div class="chip-plat"><a href="https://web.stanford.edu" target="_blank">Stanford (lectures on YouTube)</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+          </div>
+          <div class="slbl paid">🟡 Budget Paid</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.udemy.com/course/nlp-natural-language-processing-with-python/" target="_blank">NLP Bootcamp</a></div>
+              <div class="chip-plat"><a href="https://www.udemy.com" target="_blank">Udemy - Jose Portilla</a></div>
+              <div class="tags"><span class="tag paid">₹449 - ₹599</span><span class="tag cert">CERT INCLUDED</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.coursera.org/specializations/natural-language-processing" target="_blank">NLP Specialization</a></div>
+              <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - DeepLearning.AI</a></div>
+              <div class="tags"><span class="tag free">AUDIT FREE</span><span class="tag paid">CERT ~₹2,923/mo</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="conn"><div class="conn-line"></div><div class="conn-lbl">get certified + finalize your portfolio</div><div class="conn-arr">▼</div></div>
+
+  <!-- ══ PHASE 5 ══ -->
+  <div class="phase-section">
+    <button class="phase-toggle-btn" onclick="togglePhase('ph5')" id="phbtn-ph5">
+      <div class="phase-orb" style="background:#8b5cf6;color:#8b5cf6"></div>
+      <div class="phase-title" style="color:#a78bfa">Phase 5 - Capstone & Credentials</div>
+      <div class="phase-time">ongoing</div>
+      <div class="phase-chevron" id="phchev-ph5">▼</div>
+    </button>
+    <div class="phase-body" id="pb-ph5">
+
+      <div class="love-note"><span class="ni">🏅</span><span>This is the finish line, but also the beginning. <b>Every certificate you earn here is real proof</b> of everything you worked so hard to build. I'll frame it with you.</span></div>
+
+      <div class="node-card" style="--accent:#8b5cf6" id="n-cap">
+        <div class="node-hdr" onclick="toggleNode('n-cap')">
+          <span class="node-icon">🏆</span>
+          <span class="node-title">Portfolio, Competitions & Credentials</span>
+          <span class="done-check" id="dc-n-cap" onclick="markDone(event,'n-cap')">✓</span>
+          <span class="node-tog" id="nt-n-cap">▼</span>
+        </div>
+        <div class="node-body" id="nb-n-cap">
+          <div class="slbl free">🟢 Free Portfolio Building</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.kaggle.com/competitions" target="_blank">Kaggle Competitions</a></div>
+              <div class="chip-plat"><a href="https://www.kaggle.com" target="_blank">kaggle.com</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">COMPETITION CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://github.com/" target="_blank">GitHub Portfolio</a></div>
+              <div class="chip-plat"><a href="https://github.com" target="_blank">github.com</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.freecodecamp.org/learn" target="_blank">All freeCodeCamp Certifications</a></div>
+              <div class="chip-plat"><a href="https://www.freecodecamp.org" target="_blank">freecodecamp.org</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://developers.google.com/machine-learning/crash-course" target="_blank">Google ML Crash Course Cert</a></div>
+              <div class="chip-plat"><a href="https://developers.google.com" target="_blank">developers.google.com</a></div>
+              <div class="tags"><span class="tag free">₹0 FREE</span><span class="tag cert">FREE CERT</span></div>
+            </div>
+          </div>
+          <div class="slbl paid">🟡 Industry Credentials</div>
+          <div class="cgrid">
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.coursera.org/professional-certificates/ibm-data-science" target="_blank">IBM Data Science Professional Cert</a></div>
+              <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - IBM - 10 courses</a></div>
+              <div class="tags"><span class="tag paid">~₹2,923/mo x 2-3 mo</span><span class="tag cert">IBM CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.coursera.org/professional-certificates/google-advanced-data-analytics" target="_blank">Google Advanced Data Analytics</a></div>
+              <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - Google</a></div>
+              <div class="tags"><span class="tag paid">~₹2,923/mo</span><span class="tag cert">GOOGLE CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://www.coursera.org/professional-certificates/tensorflow-in-practice" target="_blank">TensorFlow Developer Certificate</a></div>
+              <div class="chip-plat"><a href="https://www.coursera.org" target="_blank">Coursera - DeepLearning.AI</a></div>
+              <div class="tags"><span class="tag paid">~₹2,923/mo</span><span class="tag cert">TF CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://nptel.ac.in" target="_blank">NPTEL Elite Gold Certificates</a></div>
+              <div class="chip-plat"><a href="https://nptel.ac.in" target="_blank">nptel.ac.in - govt recognized</a></div>
+              <div class="tags"><span class="tag paid">₹1,000 - ₹1,500/course</span><span class="tag cert">GOVT CERT</span></div>
+            </div>
+            <div class="chip">
+              <div class="chip-name"><a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-data-scientist/" target="_blank">Microsoft Azure Data Scientist (DP-100)</a></div>
+              <div class="chip-plat"><a href="https://learn.microsoft.com" target="_blank">Microsoft Learn (free study)</a></div>
+              <div class="tags"><span class="tag free">STUDY FREE</span><span class="tag paid">EXAM ~₹13,700</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FINAL -->
+  <div class="final">
+    <h2>You're going to be incredible at this.</h2>
+    <p>Every single day you put into learning this, I fall more in love with how hard you try. I'm yours, and I'm cheering for you every step of the way. ❤️</p>
+  </div>
+
+</main>
+
+<script>
+
+// ── FLOATING HEARTS ──
+const HEARTS = ['❤️','🩷','💕','💖','💝','✨','🌸','💫','🫶','💗'];
+const layer  = document.getElementById('heartsLayer');
+function spawnHeart(){
+  const h=document.createElement('div'); h.className='fheart';
+  h.textContent = HEARTS[Math.floor(Math.random()*HEARTS.length)];
+  h.style.left  = Math.random()*100+'vw';
+  const dur = 11+Math.random()*13, del = Math.random()*5;
+  h.style.animationDuration = dur+'s';
+  h.style.animationDelay   = del+'s';
+  h.style.fontSize = (9+Math.random()*13)+'px';
+  layer.appendChild(h);
+  setTimeout(()=>h.remove(),(dur+del)*1000);
+}
+for(let i=0;i<20;i++) spawnHeart();
+setInterval(spawnHeart, 850);
+
+const phaseOpen = {};
+function togglePhase(id){
+  phaseOpen[id] = !phaseOpen[id];
+  const body  = document.getElementById('pb-'+id);
+  const btn   = document.getElementById('phbtn-'+id);
+  const chev  = document.getElementById('phchev-'+id);
+  body.classList.toggle('open', phaseOpen[id]);
+  btn.classList.toggle('open', phaseOpen[id]);
+  chev.classList.toggle('open', phaseOpen[id]);
+  chev.textContent = phaseOpen[id] ? '▲' : '▼';
+}
+
+// ── NODE TOGGLE ──
+function toggleNode(id){
+  const body = document.getElementById('nb-'+id);
+  const tog  = document.getElementById('nt-'+id);
+  const hdr  = tog.closest('.node-hdr');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  tog.classList.toggle('open',!isOpen);
+  tog.textContent = isOpen ? '▼':'▲';
+  if(hdr) hdr.classList.toggle('open',!isOpen);
+  calcProgress();
+}
+
+const done = {};
+const ALL_NODES = ['n-python','n-math','n-da','n-sql','n-dl','n-nlp','n-cap'];
+function markDone(e,id){
+  e.stopPropagation();
+  done[id] = !done[id];
+  document.getElementById('dc-'+id).classList.toggle('done', done[id]);
+  if(done[id]) burst(e.clientX, e.clientY);
+  calcProgress();
+}
+function burst(x,y){
+  const cols=['#ff2d6b','#ff6eb4','#f5c97a','#c084fc','#ffffff'];
+  for(let i=0;i<10;i++){
+    const p=document.createElement('div');
+    p.style.cssText=`position:fixed;left:${x}px;top:${y}px;width:5px;height:5px;border-radius:50%;background:${cols[i%cols.length]};pointer-events:none;z-index:9999;`;
+    document.body.appendChild(p);
+    const ang=(i/10)*Math.PI*2, dist=35+Math.random()*30;
+    p.animate([
+      {transform:`translate(-50%,-50%) scale(1)`,opacity:1},
+      {transform:`translate(calc(-50% + ${Math.cos(ang)*dist}px),calc(-50% + ${Math.sin(ang)*dist}px)) scale(0)`,opacity:0}
+    ],{duration:580,easing:'cubic-bezier(0,0,0.2,1)',fill:'forwards'});
+    setTimeout(()=>p.remove(),640);
+  }
+}
+
+function calcProgress(){
+  const n = ALL_NODES.filter(id=>done[id]).length;
+  const pct = Math.round(n/ALL_NODES.length*100);
+  document.getElementById('pFill').style.width = pct+'%';
+  document.getElementById('pTxt').textContent =
+    n===0 ? 'ready to begin, baby ✦' :
+    n===ALL_NODES.length ? 'you did it!! I love you so much ❤️' :
+    `${n} of ${ALL_NODES.length} complete — keep going! 🌸`;
+}
+
+// ── EXPAND ALL ──
+const PHASES=['ph1','ph2','ph3','ph4','ph5'];
+let allOpen=false;
+function toggleAll(){
+  allOpen=!allOpen;
+  PHASES.forEach(id=>{
+    phaseOpen[id]=allOpen;
+    document.getElementById('pb-'+id).classList.toggle('open',allOpen);
+    const btn=document.getElementById('phbtn-'+id);
+    const chev=document.getElementById('phchev-'+id);
+    btn.classList.toggle('open',allOpen);
+    chev.classList.toggle('open',allOpen);
+    chev.textContent=allOpen?'▲':'▼';
+  });
+  document.getElementById('expandLbl').textContent = allOpen?'collapse all phases':'expand all phases';
+}
+</script>
+</body>
+</html>
